@@ -12,7 +12,7 @@ def load_model():
 model, tokenizer = load_model()
 
 st.title("🎭 Sentiment Analysis App")
-st.write("Enter text and see whether it’s **Positive**, **Neutral**, or **Negative**!")
+st.write("Enter text and see whether it’s **Positive**, **Negative**, **Neutral**, or **Irrelevant**!")
 
 text = st.text_area("✍️ Enter your text below:")
 
@@ -25,7 +25,7 @@ if st.button("Analyze"):
             pred = torch.argmax(probs, dim=1).item()
             confidence = torch.max(probs).item() * 100
 
-        labels = ["Negative", "Neutral", "Positive"]
+        labels = ["Positive", "Negative", "Neutral", "Irrelevant"]
 
         st.subheader("Result:")
         st.markdown(f"**Prediction:** {labels[pred]}")
